@@ -19,8 +19,8 @@ app.get('/api/product', (req, resp) => {
     resp.send(products)
 })
 
-//get list of products by id
-app.get('/api/product/:price', (req, resp) => {
+//get list of products by price
+app.get('/api/product/price/:price', (req, resp) => {
     const product = products.find(v => v.price === parseInt(req.params.price))
     if (!products) resp.status(404).send('Data not found.')
     resp.send(product)
