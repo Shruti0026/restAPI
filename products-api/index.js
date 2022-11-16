@@ -46,7 +46,7 @@ app.put('/api/product/add/:price', (req, resp) => {
     resp.send(product)
 })
 
-//delete product
+//delete product by price
 app.delete('/api/product/:price', (req, resp) => {
     const product = products.find(v => v.price === parseInt(req.params.price))
     if (!products) resp.status(404).send('Data not found.')
@@ -55,6 +55,7 @@ app.delete('/api/product/:price', (req, resp) => {
     resp.send(product)
 })
 
+//delete product by name
 app.delete('/api/product/name/:productName', (req, resp) => {
     const product = products.find(p => p.productName === req.params.productName)
     if (!products) resp.status(404).send('Data not found.')
