@@ -27,7 +27,7 @@ app.get('/api/customer/:id', (req, resp) => {
     resp.send(customer)
 })
 
-//get lsit of customers by name
+//get list of customers by name
 app.get('/api/customer/firstName/:firstName', (req, resp) => {
     //console.log("helloo")
     const customer = customers.find(c => c.firstName === req.params.firstName)
