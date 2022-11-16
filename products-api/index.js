@@ -14,19 +14,20 @@ app.get('/', (req, resp) => {
     resp.send('This is the Products API')
 })
 
-
+//get list of products
 app.get('/api/product', (req, resp) => {
     resp.send(products)
 })
 
-app.get('/api/customer/:id', (req, resp) => {
+//get list of products by id
+app.get('/api/product/:price', (req, resp) => {
     const product = products.find(v => v.price === parseInt(req.params.price))
     if (!products) resp.status(404).send('Data not found.')
     resp.send(product)
 })
 
 
-
+//add new product
 app.post('/api/product/addProduct', (req, resp) => {
     const product = {
         price: req.body.price,
@@ -36,6 +37,7 @@ app.post('/api/product/addProduct', (req, resp) => {
     resp.send(product)
 })
 
+//update changes in product list
 app.put('/api/product/add/:price', (req, resp) => {
     const product = products.find(v => v.price === parseInt(req.params.price))
     if (!products) resp.status(404).send('Data not found.')
@@ -44,6 +46,7 @@ app.put('/api/product/add/:price', (req, resp) => {
     resp.send(product)
 })
 
+//delete product
 app.delete('/api/product/:price', (req, resp) => {
     const product = products.find(v => v.price === parseInt(req.params.price))
     if (!products) resp.status(404).send('Data not found.')
